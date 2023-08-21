@@ -13,7 +13,13 @@ source_file = "theme.css"
 def process_md_file(file_path):
     with open(file_path, "r") as file:
         content = file.read()
+    # Use a regular expression to match the first H1 header line
+    match = re.search(r"^# .*", content, re.MULTILINE)
 
+    # Check if an H1 header line was found
+    if match:
+        # Remove everything before the first H1 header line
+        content = content[match.start():]
     # Use regex to replace h1 titles at the beginning of a line
     content = re.sub(
         r"^(# .+)",
@@ -66,6 +72,30 @@ def main(folder_name):
     shutil.copy(source_file, tmp_folder)
 
 
+def copy_img(folder_name):
+    # Create a temporary folder with the name of the source folder
+    tmp_folder = f"./{os.path.basename(folder_name)}.tmp"
+    os.makedirs(tmp_folder, exist_ok=True)
+
+    # Define a list of valid image file extensions
+    valid_extensions = [".jpg", ".jpeg", ".png", ".gif"]
+
+    # Iterate through the files in the source folder
+    for filename in os.listdir(folder_name):
+        # Check if the file has a valid image extension (case-insensitive)
+        file_extension = os.path.splitext(filename)[-1].lower()
+        if file_extension in valid_extensions:
+            # Build the full paths for the source and destination files
+            src_path = os.path.join(folder_name, filename)
+            dest_path = os.path.join(tmp_folder, filename)
+
+            # Copy the image file to the temporary folder
+            shutil.copy2(src_path, dest_path)
+
+    # Return the path of the temporary folder
+    print(f"Images copied to temporary folder: {tmp_folder}")
+
+
 if __name__ == "__main__":
     import sys
 
@@ -74,3 +104,4 @@ if __name__ == "__main__":
     else:
         folder_name = sys.argv[1]
         main(folder_name)
+        copy_img(folder_name)
