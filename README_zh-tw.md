@@ -36,7 +36,7 @@ pip install -r requirements.txt
 5. 執行
 
 ```bash
-make DECK=your_folder_name`
+make DECK=your_folder_name
 ```
 
 5. 就會得到 `.apkg` 檔了
