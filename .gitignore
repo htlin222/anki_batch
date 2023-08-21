@@ -1,4 +1,7 @@
 # Byte-compiled / optimized / DLL files
+**/*.tmp/
+*.apkg
+*test*/
 __pycache__/
 *.py[cod]
 *$py.class

@@ -1,0 +1,36 @@
+.front-field {
+  text-align: left;
+  color: #ff79c6;
+}
+.back-field {
+  text-align: left;
+  color: #f8f8f2;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h1 {
+  color: #ff79c6;
+}
+
+h2 {
+  color: #bd93f9;
+}
+
+h3 {
+  color: #50fa7b;
+}
+
+h4 {
+  color: #f1fa8c;
+}
+
+p {
+  margin: 1em 0 0 0;
+}
+
+blockquote {
+  margin: 1em 0 0 0;
+}

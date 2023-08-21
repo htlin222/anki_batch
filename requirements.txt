@@ -1,0 +1,2 @@
+markdown-anki-decks
+requests
