@@ -29,3 +29,10 @@ back
 
 4. 執行 `make DECK=your_folder_name`
 5. 就會得到 `.apkg` 檔了
+
+## 補充
+
+- 任何檔名包含`index` 的檔案會被忽略
+  - 特別適用於：用 wikilink 建了一個 `note_index.md` 來連到各個文件
+- 圖片以 markdown 的格式加入 `![alt](img.jpg)` 或 `![alt](https://i.imgur.com/abc123)`
+- 可以修改 `theme.css` 來調整卡片樣式

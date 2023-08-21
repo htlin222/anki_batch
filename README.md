@@ -29,5 +29,12 @@ front
 back
 ```
 
-4. run make DECK=your_folder_name
+4. run `make DECK=your_folder_name`
 5. you will get the `.apkg` file
+
+## Supplementary
+
+- Any file with the name containing 'index' will be ignored.
+  - Especially useful for: creating a `note_index.md` using wikilinks to connect various documents.
+- Images should be added in markdown format like `![alt](img.jpg)` or `![alt](https://i.imgur.com/abc123)`.
+- You can modify the `theme.css` to adjust the card styles.
