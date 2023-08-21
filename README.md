@@ -29,8 +29,19 @@ front
 back
 ```
 
-4. run `make DECK=your_folder_name`
-5. you will get the `.apkg` file
+4. Install python packages
+
+```bash
+pip install -r requirements.txt
+```
+
+5. run
+
+```bash
+make DECK=your_folder_name
+```
+
+6. you will get the `.apkg` file
 
 ## Supplementary
 

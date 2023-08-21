@@ -27,7 +27,18 @@ front
 back
 ```
 
-4. 執行 `make DECK=your_folder_name`
+4. 安裝 python 套件
+
+```bash
+pip install -r requirements.txt
+```
+
+5. 執行
+
+```bash
+make DECK=your_folder_name`
+```
+
 5. 就會得到 `.apkg` 檔了
 
 ## 補充
