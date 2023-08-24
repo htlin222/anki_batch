@@ -5,24 +5,22 @@
 ## TLDR
 
 1. create a folder with many markdown files in it
-2. will treat each markdown file as a card
+2. will treat each markdown file as a deck
 3. each markdown file should be formated as:
-   - the front will start from the h1 `# title`
+   - the front will start from the h2 `## title`
    - the back will start after `---`
-   - will omit yaml and any text before h1
+   - h1 `# title` will be the deck name
 
 ```
+# deckname
+
+## card 1
+
 ---
-title: wow
-date: 2023-08-21
-author: Hsieh-Ting Lin
----
 
-> text before h1 will be delete
+back
 
-# note1
-
-front
+## card 2
 
 ---
 
@@ -41,7 +39,7 @@ pip install -r requirements.txt
 make DECK=your_folder_name
 ```
 
-6. you will get the `.apkg` file
+6. you will get the `.apkg` file from each markdown
 
 ## Supplementary
 
