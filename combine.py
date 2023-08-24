@@ -13,32 +13,23 @@ source_file = "theme.css"
 def process_md_file(file_path):
     with open(file_path, "r") as file:
         content = file.read()
-    # Use a regular expression to match the first H1 header line
-    match = re.search(r"^# .*", content, re.MULTILINE)
-
-    # Check if an H1 header line was found
+    # Find the index of the first h2 heading
+    match = re.search(r"##\s.+", content)
     if match:
-        # Remove everything before the first H1 header line
-        content = content[match.start():]
-    # Use regex to replace h1 titles at the beginning of a line
+        index = match.start()
+        content = content[index:]
+    # Use regex to replace h2 titles at the beginning of a line
     content = re.sub(
-        r"^(# .+)",
+        r"^(## .+)",
         r'<div data-question markdown="block">\n\n\1',
         content,
         flags=re.MULTILINE,
     )
-
-    # Use regex to replace h2 titles at the beginning of a line
-    # content = re.sub(
-    #     r"^(## .+)",
-    #     r'<div data-question markdown="block">\n\n\1',
-    #     content,
-    #     flags=re.MULTILINE,
-    # )
-
     # Use regex to replace '---' at the beginning of a line
     content = re.sub(r"^---$", r"\n</div>\n", content, flags=re.MULTILINE)
-
+    # Add "---" if no match found
+    if not re.search(r"^---$", content, flags=re.MULTILINE):
+        content += "\n---\n\n(no back)"
     return content
 
 
