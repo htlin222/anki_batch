@@ -2,16 +2,19 @@
 DECK := $(folder_name)
 
 # Define the default target
-all: combine img_to_local mdankideck
+all: add_yaml img_to_local mdankideck
+
+add_yaml:
+	python add_yaml.py $(DECK) #加入yaml，加入anki的樣式
 
 combine:
 	python combine.py $(DECK)
 
 img_to_local:
-	python img_to_local.py $(DECK).tmp
+	python img_to_local.py $(DECK).tmp #下載圖片
 
 mdankideck:
-	mdankideck $(DECK).tmp .
+	mdankideck $(DECK).tmp . #產生apkg
 
 # Specify that these targets do not create actual files
 .PHONY: combine img_to_local mdankideck
