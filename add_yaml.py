@@ -9,9 +9,7 @@ import shutil
 source_file = "theme.css"
 
 
-def process_md_file(file_path):
-    with open(file_path, "r") as file:
-        content = file.read()
+def process_md_file(content, title):
     # Find the index of the first h2 heading
     content = re.sub(
         r"^(## .+)",
@@ -21,6 +19,7 @@ def process_md_file(file_path):
     )
     # Use regex to replace '---' at the beginning of a line
     content = re.sub(r"^---$", r"\n</div>\n", content, flags=re.MULTILINE)
+    content = content.replace("</div>", f"\n`deck: 📚 {title}`\n\n</div>")
     return content
 
 
@@ -31,16 +30,17 @@ def main(folder_name):
     for file_name in os.listdir(folder_name):
         if file_name.endswith(".md") and "index" not in file_name.lower():
             file_path = os.path.join(folder_name, file_name)
-            processed_content = process_md_file(file_path)
-            match = re.search(r"^#\s(.*)", processed_content, re.MULTILINE)
+            with open(file_path, "r") as file:
+                content = file.read()
+            match = re.search(r"^#\s(.*)", content, re.MULTILINE)
             if match:
                 title = match.group(1)
-                processed_content = processed_content.replace(
-                    match.group(0), "", 1)
+                processed_content = content.replace(match.group(0), "", 1)
                 print(f"📖 Title: {title}")
             else:
                 title = os.path.basename(folder_name)
                 print("No h1 header found")
+            processed_content = process_md_file(content, title)
             added_yaml_content = f"---\ncss: theme.css\n---\n\n# {os.path.basename(folder_name)}::{title}\n\n{processed_content}\n"
             tmp_folder = f"./{os.path.basename(folder_name)}.tmp"
             os.makedirs(tmp_folder, exist_ok=True)
