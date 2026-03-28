@@ -1,3 +1,7 @@
+![GitHub stars](https://img.shields.io/github/stars/htlin222/anki_batch?style=flat-square)
+![Last commit](https://img.shields.io/github/last-commit/htlin222/anki_batch?style=flat-square)
+![License](https://img.shields.io/github/license/htlin222/anki_batch?style=flat-square)
+
 # ANKI batch
 
 [中文說明](README_zh-tw.md)
